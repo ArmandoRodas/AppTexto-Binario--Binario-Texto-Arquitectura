@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TraductorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/home', function () {
+    return view('layout.app');
 });
+
+Route::match(['get', 'post'], '/texto-binario', [TraductorController::class, 'textoBinario'])->name('textoBinario');
+Route::match(['get', 'post'], '/binario-texto', [TraductorController::class, 'BinarioTexto'])->name('binarioTexto');
+
